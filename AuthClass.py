@@ -61,6 +61,9 @@ class auth:
         self.check_passwd_hash = hashlib.md5(bytes(self.check_passwd, "UTF-8")).hexdigest()
         if self.check_name not in self.names:
             return('Неверно указано имя')
+        if self.names[self.check_name] != self.check_passwd_hash:
+            return('Неверно указан пароль')
+
 
 
 

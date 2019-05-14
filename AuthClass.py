@@ -17,3 +17,11 @@ class auth:
         self.names = json_data
         self.myfile.close()
 
+    def create_db(self, filename):
+        self.filename = filename
+        if os.path.exists(self.filename):
+            self.dataname=self.filename
+            print("Данные пользователей хранятся в файле " + self.dataname)
+            return
+
+

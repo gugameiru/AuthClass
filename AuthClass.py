@@ -39,5 +39,12 @@ class auth:
             print("Данные пользователей хранятся в файле " + self.dataname)
             return
 
+    def add_user(self, name, password):
+        self.name = name
+        self.passwd = password
+        if self.name in self.names:
+            raise Exception("Такой пользователь уже есть")
+
+
 
 

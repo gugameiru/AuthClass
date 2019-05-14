@@ -54,5 +54,17 @@ class AuthClassTest(unittest.TestCase):
         self.user5.create_db(self.dataname,0)
         self.assertEqual('db_names.txt', self.user5.dataname)
 
+    def test_is_user_existing(self):
+        self.name = 'Misha'
+        self.password = '123456'
+        self.names = {self.name:self.password}
+        self.dataname = 'db_names.txt'
+        self.myfile = open(self.dataname, mode='w')
+        json.dump(self.names, self.myfile)
+        self.myfile.close()
+        self.user6 = auth()
+        self.assertRaises(ValueError, self.user6.add_user, self.name, self.password)
+
+
 
 

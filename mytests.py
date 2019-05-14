@@ -141,7 +141,19 @@ class AuthClassTest(unittest.TestCase):
         self.user11.add_user(self.name, self.password)
         self.assertEqual(self.user11.check_user(self.right_name, self.right_password),'Пользователь аутентифицирован')
         
-                
+    def test_is_user_deleted_from_memory(self):
+        self.name = 'Senya'
+        self.password = '124456'
+        self.user12 = auth()
+        self.user12.add_user(self.name, self.password)
+        self.user12.delete_user(self.name, self.password)
+        
+        if self.name not in self.user12.names:
+            self.assertTrue(True)
+        else:
+            self.assertTrue(False)
+
+    
 
 
 

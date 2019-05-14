@@ -153,6 +153,27 @@ class AuthClassTest(unittest.TestCase):
         else:
             self.assertTrue(False)
 
+    def test_is_user_deleted_from_file(self):
+        self.name = 'Klara'
+        self.password = '124456'
+        self.user13 = auth()
+        self.user13.add_user(self.name, self.password)
+        self.user13.delete_user(self.name, self.password)
+        self.dataname = 'db_names.txt'
+        self.myfile = open(self.dataname, mode='r')
+        try:
+            json_data = json.load(self.myfile)
+        except json.decoder.JSONDecodeError as err:
+            json_data = {}
+        
+        self.names2 = json_data
+        self.myfile.close()
+        if self.name not in self.names2: 
+            self.assertTrue(True)
+        else:
+            self.assertTrue(False)
+
+
     
 
 

@@ -55,6 +55,13 @@ class auth:
             print('Пользователь добавлен')
             return
 
+    def check_user(self, name, password):
+        self.check_name=name
+        self.check_passwd = password
+        self.check_passwd_hash = hashlib.md5(bytes(self.check_passwd, "UTF-8")).hexdigest()
+        if self.check_name not in self.names:
+            return('Неверно указано имя')
+
 
 
 

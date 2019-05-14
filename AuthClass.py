@@ -23,5 +23,11 @@ class auth:
             self.dataname=self.filename
             print("Данные пользователей хранятся в файле " + self.dataname)
             return
+        else:
+            self.dataname = filename
+            my_file = open(self.dataname, 'w')
+            my_file.close()
+            print("Данные пользователей хранятся в файле " + self.dataname)
+            return
 
 

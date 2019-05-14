@@ -89,6 +89,31 @@ class AuthClassTest(unittest.TestCase):
             self.assertTrue(False)
         self.assertEqual(self.user8.names[self.name], self.passwd_hash)
 
+    def test_is_user_in_file(self):
+        self.name = 'Zhenya'
+        self.password = '123456'
+        self.passwd_hash = hashlib.md5(bytes(self.password, "UTF-8")).hexdigest()
+        self.names = {self.name:self.passwd_hash}
+        
+        self.user9 = auth()
+        self.user9.add_user(self.name, self.password)
+        
+        self.dataname = 'db_names.txt'
+        self.myfile = open(self.dataname, mode='r')
+        try:
+            json_data = json.load(self.myfile)
+        except json.decoder.JSONDecodeError as err:
+            json_data = {}
+        
+        self.names2 = json_data
+        self.myfile.close()
+
+        if self.name in self.names2 and self.names2[self.name]==self.passwd_hash:
+            self.assertTrue(True)
+        else:
+            self.assertTrue(False)
+
+
 
 
 

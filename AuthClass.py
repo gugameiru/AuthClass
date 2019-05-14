@@ -63,6 +63,8 @@ class auth:
             return('Неверно указано имя')
         if self.names[self.check_name] != self.check_passwd_hash:
             return('Неверно указан пароль')
+        return('Пользователь аутентифицирован')
+
 
 
 

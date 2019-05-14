@@ -77,6 +77,19 @@ class AuthClassTest(unittest.TestCase):
         self.user7.add_user(self.name, self.password)
         self.assertNotEqual(self.password, self.user7.passwd_hash)
 
+    def test_is_user_in_memory(self):
+        self.name = 'Petya'
+        self.password = '123489'
+        self.passwd_hash = hashlib.md5(bytes(self.password, "UTF-8")).hexdigest()
+        self.user8 = auth()
+        self.user8.add_user(self.name, self.password)
+        if self.name in self.user8.names:
+            self.assertTrue(True)
+        else:
+            self.assertTrue(False)
+        self.assertEqual(self.user8.names[self.name], self.passwd_hash)
+
+
 
 
 

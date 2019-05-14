@@ -48,4 +48,11 @@ class AuthClassTest(unittest.TestCase):
         self.user4.create_db(self.dataname)
         self.assertEqual(self.dataname, self.user4.dataname)
 
+    def test_is_using_default_file(self):
+        self.dataname = 'db_names_8.txt'
+        self.user5 = auth()
+        self.user5.create_db(self.dataname,0)
+        self.assertEqual('db_names.txt', self.user5.dataname)
+
+
 

@@ -65,6 +65,15 @@ class auth:
             return('Неверно указан пароль')
         return('Пользователь аутентифицирован')
 
+    def delete_user(self, name, password):
+        self.permission = self.check_user(name, password)
+        if self.permission == 'Неверно указано имя' or self.permission == 'Неверно указан пароль':
+            return self.permission
+        if self.permission == 'Пользователь аутентифицирован':
+            del self.names[self.name]
+            
+            return('Пользователь удален')
+
 
 
 

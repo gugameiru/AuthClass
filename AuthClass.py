@@ -49,9 +49,12 @@ class auth:
             return("Такой пользователь уже есть")
         else:
             self.names[self.name]=self.passwd
-            
+            myfile = open(self.dataname, mode='w')
+            json.dump(self.names, myfile)
+            myfile.close()
             print('Пользователь добавлен')
             return
+
 
 
 

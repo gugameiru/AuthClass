@@ -65,6 +65,19 @@ class AuthClassTest(unittest.TestCase):
         self.user6 = auth()
         self.assertRaises(ValueError, self.user6.add_user, self.name, self.password)
 
+    def test_is_password_secured(self):
+        self.name = 'Vasya'
+        self.password = '123456'
+        self.names = {self.name:self.password}
+        self.dataname = 'db_names.txt'
+        self.myfile = open(self.dataname, mode='w')
+        json.dump(self.names, self.myfile)
+        self.myfile.close()
+        self.user7 = auth()
+        self.user7.add_user(self.name, self.password)
+        self.assertNotEqual(self.password, self.user7.passwd_hash)
+
+
 
 
 

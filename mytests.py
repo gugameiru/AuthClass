@@ -130,6 +130,17 @@ class AuthClassTest(unittest.TestCase):
         self.user11 = auth()
         self.user11.add_user(self.name, self.password)
         self.assertEqual(self.user11.check_user(self.name, self.fake_password),'Неверно указан пароль')
+
+    def test_is_authentificated(self):
+        self.name = 'Slava'
+        self.right_name = 'Slava'
+        self.password = '124456'
+        self.right_password = '124456'
+                
+        self.user11 = auth()
+        self.user11.add_user(self.name, self.password)
+        self.assertEqual(self.user11.check_user(self.right_name, self.right_password),'Пользователь аутентифицирован')
+        
                 
 
 

@@ -40,10 +40,20 @@ class auth:
             return
 
     def add_user(self, name, password):
+        
         self.name = name
         self.passwd = password
+        self.passwd_hash = hashlib.md5(bytes(self.passwd, "UTF-8")).hexdigest()
         if self.name in self.names:
-            raise Exception("Такой пользователь уже есть")
+            return("Такой пользователь уже есть")
+        else:
+            self.names[self.name]=self.passwd_hash
+            myfile = open(self.dataname, mode='w')
+            json.dump(self.names, myfile)
+            myfile.close()
+            print('Пользователь добавлен')
+            return    
+
 
 
 

@@ -71,8 +71,11 @@ class auth:
             return self.permission
         if self.permission == 'Пользователь аутентифицирован':
             del self.names[self.name]
-            
-            return('Пользователь удален')
+            myfile = open(self.dataname, mode='w')
+            json.dump(self.names, myfile)
+            myfile.close()
+            return('Пользователь удален')      
+
 
 
 

@@ -122,6 +122,16 @@ class AuthClassTest(unittest.TestCase):
         self.user10.add_user(self.name, self.password)
                 self.assertEqual(self.user10.check_user(self.fake_name, self.password),'Неверно указано имя')
 
+    def test_is_right_password(self):
+        self.name = 'Manya'
+        self.password = '124456'
+        self.fake_password = '124564'
+                
+        self.user11 = auth()
+        self.user11.add_user(self.name, self.password)
+        self.assertEqual(self.user11.check_user(self.name, self.fake_password),'Неверно указан пароль')
+                
+
 
 
 
